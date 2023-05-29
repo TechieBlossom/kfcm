@@ -6,17 +6,17 @@ import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.postgrest
 import kotlinx.coroutines.Dispatchers
 
-val constants = Constants()
+val supabaseConstants = SupabaseConstants()
 
-class Constants {
+class SupabaseConstants {
     companion object {
-        const val SUPABASE_URL = "https://muvntiyztalheltppvrn.supabase.co"
-        const val SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11dm50aXl6dGFsaGVsdHBwdnJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEzODE3ODAsImV4cCI6MTk5Njk1Nzc4MH0.jiJ4cdz1dnvMFO-HWPXxlcJstkAQeeJsztu8xbFfgLg"
+        const val supabaseURL = "https://muvntiyztalheltppvrn.supabase.co"
+        const val supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11dm50aXl6dGFsaGVsdHBwdnJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEzODE3ODAsImV4cCI6MTk5Njk1Nzc4MH0.jiJ4cdz1dnvMFO-HWPXxlcJstkAQeeJsztu8xbFfgLg"
     }
 
     fun getClient() = createSupabaseClient(
-        supabaseKey = SUPABASE_KEY,
-        supabaseUrl = SUPABASE_URL
+        supabaseKey = supabaseKey,
+        supabaseUrl = supabaseURL
     ) {
         install(Postgrest)
     }
@@ -24,7 +24,7 @@ class Constants {
 
 suspend fun getData() {
     with(Dispatchers.IO) {
-        val client = constants.getClient()
+        val client = supabaseConstants.getClient()
         val response = client.postgrest["table_league"].select()
         val leagues = response.decodeList<League>()
         Log.i("Leagues", leagues.toString())

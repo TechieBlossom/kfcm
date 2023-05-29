@@ -62,6 +62,10 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:2.3.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
 
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("io.coil-kt:coil-svg:2.2.2")
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.4.3")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
