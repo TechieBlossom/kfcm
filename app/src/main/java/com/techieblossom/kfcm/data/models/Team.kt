@@ -1,57 +1,65 @@
 package com.techieblossom.kfcm.data.models
 
 import com.techieblossom.kfcm.constants.UIConstants
+import com.techieblossom.kfcm.preparePlayerImageUrl
+import com.techieblossom.kfcm.prepareTeamImageUrl
 
+@kotlinx.serialization.Serializable
 data class Team(
     val id: Int,
-    val name: String?,
-    val nationId: Int?,
-    val leagueId: Int?,
-    val overall: Int?,
-    val attack: Int?,
-    val midfield: Int?,
-    val defence: Int?,
-    val tactics: Tactics?,
-    val kits: Int?,
-    val details: Details?,
-    val starting: List<Starting>?,
-    val league: League?,
+    val name: String? = null,
+    val nationId: Int? = null,
+    val leagueId: Int? = null,
+    val overall: Int? = null,
+    val attack: Int? = null,
+    val midfield: Int? = null,
+    val defence: Int? = null,
+    val tactics: Tactics? = null,
+    val kits: Int? = null,
+    val details: Details? = null,
+    val starting: List<Starting>? = null,
+    val league: League? = null,
 ) {
-    fun teamLogoURL() = buildString {
+    fun teamLogoURL() = prepareTeamImageUrl(id)
+
+    fun teamLogoURLHD() = buildString {
         append(UIConstants.teamLogoPrefix)
-        append("/")
         append(id)
-        append("/120.png")
+        append("/240.png")
     }
 
     private fun hasTransferBudget() = details?.transferBudget?.isNotBlank() ?: false
 
     fun clubWorthAndTransferBudget() = buildString {
-        append(details?.clubWorth)
+        append(details?.clubWorth ?: "")
         if (hasTransferBudget()) append(" | ${details?.transferBudget}")
     }
 }
 
+@kotlinx.serialization.Serializable
 data class Tactics(
     val defence: Defence?,
     val offence: Offence?,
 )
 
+@kotlinx.serialization.Serializable
 data class Defence(
     val defensiveStyle: String?,
     val teamWidth: Int?,
-    val depth: Int?
+    val depth: Int?,
 )
 
+@kotlinx.serialization.Serializable
 data class Offence(
     val buildUpPlay: String?,
     val chanceCreation: String?,
-    val  width: Int?,
-    val  playersInBox: Int?,
-    val  corners: Int?,
-    val  freeKicks: Int?,
+    val width: Int?,
+    val playersInBox: Int?,
+    val corners: Int?,
+    val freeKicks: Int?,
 )
 
+@kotlinx.serialization.Serializable
 data class Details(
     val homeStadium: String?,
     val rival: String?,
@@ -71,9 +79,21 @@ data class Details(
     val rightCorner: String?,
 )
 
+@kotlinx.serialization.Serializable
 data class Starting(
     val id: Int?,
     val name: String?,
     val position: ActualPosition?,
     val rating: Int?,
-)
+) {
+
+    fun shortName(): String? {
+        val indexOfEmptySpace = name?.indexOfFirst { it == ' ' }
+        if (indexOfEmptySpace != -1) {
+            return name?.substring(indexOfEmptySpace ?: 0)
+        }
+        return name
+    }
+
+    fun playerImageUrl() = preparePlayerImageUrl(id)
+}

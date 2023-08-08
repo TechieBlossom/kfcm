@@ -1,8 +1,9 @@
-package com.techieblossom.kfcm.ui.features.teams
+package com.techieblossom.kfcm.ui.features.team.list.composable
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -16,19 +17,17 @@ import com.techieblossom.kfcm.ui.theme.FCMTheme
 fun RatingStars(rating: Int, modifier: Modifier = Modifier) {
     val stars = calculateStars(rating)
     val hasHalfStars = hasHalfStars(stars)
-    calculateStars(rating).let {
-        Row(modifier = modifier) {
+    stars.let {
+        Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(2.dp)) {
             repeat(it.toInt()) {
                 Image(
                     imageVector = ImageVector.vectorResource(R.drawable.filled_star),
                     contentDescription = null,
-                    modifier = Modifier.padding(horizontal = 2.dp)
                 )
             }
             if (hasHalfStars) Image(
                 imageVector = ImageVector.vectorResource(R.drawable.half_filled_star),
                 contentDescription = null,
-                modifier = Modifier.padding(horizontal = 2.dp)
             )
         }
     }
@@ -53,8 +52,10 @@ private fun calculateStars(number: Int): Double {
 
 @Preview
 @Composable
-fun PreviewRatingStars() {
+fun Preview_RatingStars() {
     FCMTheme {
-        RatingStars(66)
+        Surface {
+            RatingStars(80)
+        }
     }
 }

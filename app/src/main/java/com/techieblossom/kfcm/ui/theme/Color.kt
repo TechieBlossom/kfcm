@@ -68,8 +68,13 @@ val md_theme_dark_scrim = Color(0xFF000000)
 val seed = Color(0xFFA6400F)
 
 
-val rating5 = Color(0xFF0C8539);
-val rating4 = Color(0xFF66A80F);
-val rating3 = Color(0xFFE6B600);
-val rating2 = Color(0xFFD95C0F);
-val rating1 = Color(0xFFC92A2A);
+val rating5 = Color(0xFF0C8539)
+val rating4 = Color(0xFF66A80F)
+val rating3 = Color(0xFFE6B600)
+val rating2 = Color(0xFFD95C0F)
+val rating1 = Color(0xFFC92A2A)
+
+//val groundColor = Color(0xFF006400)
+val groundColor = Color(0xFF00563F)
+val stripColor = Color(0x11D3F7D3)
+val groundMarkingColor = Color(0x11CCCCCC)

@@ -2,10 +2,9 @@ package com.techieblossom.kfcm.constants
 
 class UIConstants {
     companion object {
-        const val teamLogoPrefix = "https://cdn.sofifa.net/teams"
-        const val ovr = "OVR"
-        const val att = "ATT"
-        const val mid = "MID"
-        const val def = "DEF"
+        const val teamLogoPrefix = "https://cdn.sofifa.net/teams/"
+        const val playerImagePrefix = "https://cdn.sofifa.net/players/"
+        const val nationFlagImagePrefix = "https://cdn.sofifa.net/flags/"
+        const val euro = "€"
     }
 }

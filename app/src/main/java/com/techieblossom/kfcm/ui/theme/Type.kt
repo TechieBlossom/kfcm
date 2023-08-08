@@ -7,42 +7,60 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.sp
+import com.techieblossom.kfcm.R
 
-val poppinsGoogleFont = GoogleFont("Poppins")
-val poppinsFont = Font(googleFont = poppinsGoogleFont, fontProvider = googleFontProvider)
-val poppinsFontFamily = FontFamily(poppinsFont)
+//val poppinsGoogleFont = GoogleFont("Poppins")
+//val poppinsFont = Font(googleFont = poppinsGoogleFont, fontProvider = googleFontProvider)
+//val poppinsFontFamily = FontFamily(poppinsFont)
+
+val dinProFontFamily = FontFamily(
+    androidx.compose.ui.text.font.Font(R.font.din_pro, FontWeight.Normal)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     displayLarge = TextStyle(
-        fontFamily = poppinsFontFamily,
+        fontFamily = dinProFontFamily,
         fontSize = 32.sp,
     ),
     titleLarge = TextStyle(
-        fontFamily = poppinsFontFamily,
+        fontFamily = dinProFontFamily,
         fontSize = 20.sp,
     ),
     titleMedium = TextStyle(
-        fontFamily = poppinsFontFamily,
+        fontFamily = dinProFontFamily,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
     ),
     titleSmall = TextStyle(
-      fontFamily = poppinsFontFamily,
+      fontFamily = dinProFontFamily,
         fontSize = 14.sp,
     ),
     bodyMedium = TextStyle(
-        fontFamily = poppinsFontFamily,
+        fontFamily = dinProFontFamily,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 12.sp,
+        fontSize = 14.sp,
     ),
     bodySmall = TextStyle(
-        fontFamily = poppinsFontFamily,
-        fontSize = 12.sp,
+        fontFamily = dinProFontFamily,
+        fontSize = 14.sp,
     ),
     labelSmall = TextStyle(
-        fontFamily = poppinsFontFamily,
+        fontFamily = dinProFontFamily,
+        fontWeight = FontWeight.Light,
+        fontSize = 14.sp,
+    ),
+    labelMedium = TextStyle(
+        fontFamily = dinProFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 10.sp,
+    )
+)
+
+val CompactTypography = Typography(
+    labelSmall = TextStyle(
+        fontFamily = dinProFontFamily,
         fontWeight = FontWeight.Light,
         fontSize = 12.sp,
-    ),
+    )
 )

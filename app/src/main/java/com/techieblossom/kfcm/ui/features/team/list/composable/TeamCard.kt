@@ -1,7 +1,9 @@
-package com.techieblossom.kfcm.ui.features.teams
+package com.techieblossom.kfcm.ui.features.team.list.composable
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -22,13 +25,15 @@ import coil.request.ImageRequest
 import com.techieblossom.kfcm.R
 import com.techieblossom.kfcm.data.models.Team
 import com.techieblossom.kfcm.previewMocks.teamForCard
+import com.techieblossom.kfcm.ui.dashIfNullOrBlank
 import com.techieblossom.kfcm.ui.theme.FCMTheme
 
 @Composable
-fun TeamCard(team: Team) {
+fun TeamCard(team: Team, modifier: Modifier) {
     OutlinedCard(
         border = BorderStroke(width = 2.dp, color = MaterialTheme.colorScheme.outlineVariant),
         shape = RoundedCornerShape(8.dp),
+        modifier = modifier
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current).data(team.teamLogoURL())
@@ -38,7 +43,7 @@ fun TeamCard(team: Team) {
                 .size(60.dp)
                 .padding(top = 8.dp)
                 .align(Alignment.CenterHorizontally),
-            contentDescription = stringResource(id = R.string.teamLogo),
+            contentDescription = stringResource(id = R.string.team_logo),
         )
         team.name?.let {
             Text(
@@ -48,7 +53,7 @@ fun TeamCard(team: Team) {
             )
         }
         Text(
-            text = team.clubWorthAndTransferBudget(),
+            text = team.clubWorthAndTransferBudget().dashIfNullOrBlank(),
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
@@ -77,7 +82,9 @@ fun TeamCard(team: Team) {
             Text(
                 text = it.uppercase(),
                 style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
+                    .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
                     .padding(bottom = 8.dp, start = 8.dp, end = 8.dp)
             )
@@ -90,8 +97,8 @@ fun TeamCard(team: Team) {
     uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL,
 )
 @Composable
-fun PreviewTeamCard() {
+fun Preview_TeamCard() {
     FCMTheme {
-        TeamCard(team = teamForCard)
+        TeamCard(team = teamForCard, modifier = Modifier)
     }
 }
