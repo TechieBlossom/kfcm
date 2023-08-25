@@ -25,7 +25,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamDetailAppBar
 import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamFormation
 import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamFormationInfo
+import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamKits
 import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamOverview
+import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamRoles
 import com.techieblossom.kfcm.ui.features.team.detail.composable.TeamSecondaryInfo
 import com.techieblossom.kfcm.ui.features.team.detail.viewModel.TeamDetailScreenViewModel
 
@@ -36,7 +38,8 @@ val EXPANDED_TOP_BAR_HEIGHT = 120.dp
 @Composable
 fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: Int) -> Unit) {
     val viewModel = viewModel<TeamDetailScreenViewModel>()
-    val teamDetailsUiState = viewModel.teamUiState.collectAsState()
+    val teamDetailsUiState by viewModel.teamUiState.collectAsState()
+    val team = teamDetailsUiState.team
     val listState = rememberLazyListState()
     val isScrollingStarted by remember {
         derivedStateOf {
@@ -65,7 +68,7 @@ fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: In
 
                 item {
                     TeamOverview(
-                        team = teamDetailsUiState.value.team,
+                        team = team,
                         modifier = Modifier
                             .padding(contentPadding)
                             .padding(bottom = 8.dp)
@@ -82,8 +85,8 @@ fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: In
 
                 item {
                     TeamFormationInfo(
-                        teamDetailsUiState.value.formation,
-                        teamDetailsUiState.value.team.details?.startingAverageAge,
+                        teamDetailsUiState.formation,
+                        team.details?.startingAverageAge,
                         modifier = Modifier
                             .padding(contentPadding)
                             .padding(bottom = 2.dp)
@@ -91,10 +94,10 @@ fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: In
                 }
 
                 item {
-                    teamDetailsUiState.value.team.starting?.let {
+                    team.starting?.let {
                         TeamFormation(
                             players = it,
-                            formation = teamDetailsUiState.value.formation,
+                            formation = teamDetailsUiState.formation,
                             modifier = Modifier
                                 .padding(contentPadding)
                                 .padding(bottom = 8.dp),
@@ -105,7 +108,7 @@ fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: In
 
                 item {
                     TeamTactics(
-                        tactics = teamDetailsUiState.value.team.tactics,
+                        tactics = team.tactics,
                         modifier = Modifier
                             .padding(contentPadding)
                             .padding(bottom = 8.dp)
@@ -114,7 +117,25 @@ fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: In
 
                 item {
                     TeamSecondaryInfo(
-                        details = teamDetailsUiState.value.team.details,
+                        details = team.details,
+                        modifier = Modifier
+                            .padding(contentPadding)
+                            .padding(bottom = 8.dp)
+                    )
+                }
+
+                item {
+                    TeamRoles(
+                        details = team.details, modifier = Modifier
+                            .padding(contentPadding)
+                            .padding(bottom = 8.dp)
+                    )
+                }
+
+                item {
+                    TeamKits(
+                        kitsUrls = team.kitsURL(),
+                        isNation = team.isNation(),
                         modifier = Modifier
                             .padding(contentPadding)
                             .padding(bottom = 8.dp)
@@ -123,7 +144,7 @@ fun TeamDetailScreen(onBackPressed: () -> Boolean, onPlayerTapped: (playerId: In
 
             }
             TeamDetailAppBar(
-                teamDetailsUiState.value.team,
+                team = team,
                 transition = transition,
                 onBackPressed = onBackPressed
             )

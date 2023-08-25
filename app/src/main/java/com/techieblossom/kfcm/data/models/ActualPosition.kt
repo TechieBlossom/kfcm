@@ -29,4 +29,5 @@ enum class ActualPosition {
     ST,
     RS,
     SUB,
+    RES
 }

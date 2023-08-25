@@ -34,6 +34,22 @@ data class Team(
         append(details?.clubWorth ?: "")
         if (hasTransferBudget()) append(" | ${details?.transferBudget}")
     }
+
+    fun kitsURL(): List<String> {
+        val urls = mutableListOf<String>()
+        repeat(if (isNation()) 3 else 4) { index ->
+            urls.add(buildString {
+                append(UIConstants.kitsImagePrefix)
+                append(id)
+                append("/23_")
+                append(index)
+                append("@3x.png")
+            })
+        }
+        return urls
+    }
+
+    fun isNation(): Boolean = leagueId == 78
 }
 
 @kotlinx.serialization.Serializable

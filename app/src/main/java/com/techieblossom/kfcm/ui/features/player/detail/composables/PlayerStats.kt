@@ -111,11 +111,11 @@ private fun getStatsList(statsViewType: StatsViewType, player: Player) =
 
 private fun prepareStatsListForFut(player: Player) = listOf(
     mapOf(
-        "Pace" to listOf(
+        "PACE" to listOf(
             Pair("Sprint speed", player.pac?.sprintSpeed),
             Pair("Acceleration", player.pac?.acceleration)
         ),
-        "Shoot" to listOf(
+        "SHOOT" to listOf(
             Pair("Finishing", player.sho?.finishing),
             Pair("Positioning", player.sho?.positioning),
             Pair("Long shots", player.sho?.longShots),
@@ -123,7 +123,7 @@ private fun prepareStatsListForFut(player: Player) = listOf(
             Pair("Penalties", player.sho?.penalties),
             Pair("Volleys", player.sho?.volleys),
         ),
-        "Pass" to listOf(
+        "PASS" to listOf(
             Pair("Vision", player.pas?.vision),
             Pair("Crossing", player.pas?.crossing),
             Pair("FK accuracy", player.pas?.fkAccuracy),
@@ -133,7 +133,7 @@ private fun prepareStatsListForFut(player: Player) = listOf(
         ),
     ),
     mapOf(
-        "Dribble" to listOf(
+        "DRIBBLE" to listOf(
             Pair("Agility", player.dri?.agility),
             Pair("Balance", player.dri?.balance),
             Pair("Reactions", player.dri?.reactions),
@@ -141,14 +141,14 @@ private fun prepareStatsListForFut(player: Player) = listOf(
             Pair("Ball control", player.dri?.ballControl),
             Pair("Dribbling", player.dri?.dribbling),
         ),
-        "Defence" to listOf(
+        "DEFENCE" to listOf(
             Pair("Interceptions", player.def?.interceptions),
             Pair("Head. accuracy", player.def?.headingAccuracy),
             Pair("Def. awareness", player.def?.defensiveAwareness),
             Pair("Standing tackle", player.def?.standingTackle),
             Pair("Sliding tackle", player.def?.slidingTackle),
         ),
-        "Physical" to listOf(
+        "PHYSICAL" to listOf(
             Pair("Jumping", player.phy?.jumping),
             Pair("Stamina", player.phy?.stamina),
             Pair("Strength", player.phy?.strength),

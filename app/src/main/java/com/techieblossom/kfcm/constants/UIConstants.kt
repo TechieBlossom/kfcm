@@ -5,6 +5,7 @@ class UIConstants {
         const val teamLogoPrefix = "https://cdn.sofifa.net/teams/"
         const val playerImagePrefix = "https://cdn.sofifa.net/players/"
         const val nationFlagImagePrefix = "https://cdn.sofifa.net/flags/"
+        const val kitsImagePrefix = "https://cdn.sofifa.net/kits/"
         const val euro = "€"
     }
 }

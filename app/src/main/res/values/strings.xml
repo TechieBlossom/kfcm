@@ -27,7 +27,9 @@
     <string name="corners">CORNERS</string>
     <string name="free_kick">FREE KICK</string>
     <string name="roles">ROLES</string>
+    <string name="kits">KITS</string>
     <string name="player_image">Player image</string>
+    <string name="kits_image">Kits image</string>
     <string name="starting_xi">Starting XI</string>
     <string name="avg_age">Avg. age: %1$s</string>
     <string name="bornOn">Born on:&#160;</string>

@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.techieblossom.kfcm.data.getTeams
-import com.techieblossom.kfcm.ui.features.team.list.model.ListState
+import com.techieblossom.kfcm.ui.features.model.ListState
 import com.techieblossom.kfcm.ui.features.team.list.model.TeamUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -56,12 +56,6 @@ class TeamScreenViewModel : ViewModel() {
 
             page = _teamsUiState.value.teams.size / 10
             canPaginate = true
-        }
-    }
-
-    fun onSearch(searchTerm: String) {
-        if (searchTerm.length > 2) {
-            Log.d("onSearch","Start search")
         }
     }
 

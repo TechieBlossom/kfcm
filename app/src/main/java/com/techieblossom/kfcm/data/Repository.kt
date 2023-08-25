@@ -8,7 +8,6 @@ import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Order
 
 suspend fun getTeams(page: Int, itemsPerPage: Long): List<Team> {
-//    delay(2000)
     val start = page * itemsPerPage
     val end = ((page + 1) * itemsPerPage) - 1
     val client = supabaseConstants.getClient()
@@ -22,8 +21,7 @@ suspend fun getTeams(page: Int, itemsPerPage: Long): List<Team> {
             order("midfield", order = Order.DESCENDING)
             order("defence", order = Order.DESCENDING)
         }
-    val teams = response.decodeList<Team>()
-    return teams
+    return response.decodeList()
 }
 
 suspend fun getTeam(teamId: Int): Team {
@@ -48,6 +46,16 @@ suspend fun getTeamMinimal(teamId: Int): TeamMinimal {
     return team
 }
 
+suspend fun getTeamMinimalByName(name: String) : List<TeamMinimal> {
+    val client = supabaseConstants.getClient()
+    val response =
+        client.postgrest["table_team"].select(columns = "id, name, overall") {
+            ilike("name", "%$name%")
+            limit(10)
+        }
+    return response.decodeList()
+}
+
 suspend fun getPlayer(playerId: Int): Player {
     val client = supabaseConstants.getClient()
     val response =
@@ -57,4 +65,14 @@ suspend fun getPlayer(playerId: Int): Player {
     val player = response.decodeSingle<Player>()
     Log.i("Player :", player.toString())
     return player
+}
+
+suspend fun getPlayerByName(name: String) : List<Player> {
+    val client = supabaseConstants.getClient()
+    val response =
+        client.postgrest["table_player"].select(columns = "*") {
+            ilike("name", "%$name%")
+            limit(10)
+        }
+    return response.decodeList()
 }
