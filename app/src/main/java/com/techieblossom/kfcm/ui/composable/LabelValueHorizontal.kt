@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.techieblossom.kfcm.ui.theme.FCMTheme
@@ -29,7 +30,7 @@ fun LabelValueHorizontal(
             .padding(if (applyColor) 8.dp else 0.dp)
     ) {
         Label(label = label, modifier = Modifier.weight(1f))
-        Value(value = value, modifier = Modifier.weight(1f))
+        Value(value = value, textAlign = TextAlign.End, modifier = Modifier.weight(1f))
     }
 }
 

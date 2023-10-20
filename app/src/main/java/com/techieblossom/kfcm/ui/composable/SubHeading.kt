@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.techieblossom.kfcm.ui.theme.FCMTheme
 
 @Composable
-fun Heading(
+fun SubHeading(
     text: String,
     modifier: Modifier = Modifier,
     textAlign: TextAlign = TextAlign.Left,
@@ -23,7 +23,7 @@ fun Heading(
 ) {
     if (hasBgColor) {
         Box(modifier = modifier.background(MaterialTheme.colorScheme.inversePrimary)) {
-            Text(text, Modifier.padding(start = 8.dp), textAlign)
+            Text(text, modifier, textAlign)
         }
     } else {
         Text(text, modifier, textAlign)
@@ -38,7 +38,7 @@ private fun Text(
 ) {
     Text(
         text,
-        style = MaterialTheme.typography.titleMedium,
+        style = MaterialTheme.typography.bodyMedium,
         modifier = modifier
             .padding(bottom = 4.dp)
             .fillMaxWidth(),
@@ -48,20 +48,20 @@ private fun Text(
 
 @Preview
 @Composable
-fun Preview_Heading() {
+fun Preview_SubHeading() {
     FCMTheme {
         Surface {
-            Heading("DEFENCE")
+            SubHeading("DEFENCE")
         }
     }
 }
 
 @Preview
 @Composable
-fun Preview_HeadingWithBG() {
+fun Preview_SubHeadingWithBG() {
     FCMTheme {
         Surface {
-            Heading("DEFENCE", hasBgColor = true)
+            SubHeading("DEFENCE", hasBgColor = true)
         }
     }
 }

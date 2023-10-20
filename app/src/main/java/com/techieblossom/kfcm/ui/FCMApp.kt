@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.techieblossom.kfcm.ui.features.player.detail.screen.PlayerDetailScreen
-import com.techieblossom.kfcm.ui.features.search.SearchEntity
-import com.techieblossom.kfcm.ui.features.search.screen.SearchScreen
-import com.techieblossom.kfcm.ui.features.team.detail.screen.TeamDetailScreen
-import com.techieblossom.kfcm.ui.features.team.list.screen.TeamScreen
+import com.techieblossom.kfcm.ui.feature.player.detail.screen.PlayerDetailScreen
+import com.techieblossom.kfcm.ui.feature.search.SearchEntity
+import com.techieblossom.kfcm.ui.feature.search.screen.SearchScreen
+import com.techieblossom.kfcm.ui.feature.team.detail.screen.TeamDetailScreen
+import com.techieblossom.kfcm.ui.feature.team.list.screen.TeamScreen
+import com.techieblossom.kfcm.ui.navigation.RouteConstants
 
 enum class FCMRoutes {
     Teams,

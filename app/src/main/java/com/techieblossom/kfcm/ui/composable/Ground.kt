@@ -16,9 +16,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.techieblossom.kfcm.previewMocks.teamForCard
-import com.techieblossom.kfcm.ui.features.team.detail.composable.PlayerItem
-import com.techieblossom.kfcm.ui.features.team.detail.usecase.getPositionOffsetMapping
+import com.techieblossom.kfcm.ui.previewMocks.teamForCard
+import com.techieblossom.kfcm.ui.feature.team.detail.composable.PlayerItem
+import com.techieblossom.kfcm.ui.feature.team.detail.usecase.getPositionOffsetMapping
 import com.techieblossom.kfcm.ui.theme.FCMTheme
 import com.techieblossom.kfcm.ui.theme.groundColor
 import com.techieblossom.kfcm.ui.theme.groundMarkingColor

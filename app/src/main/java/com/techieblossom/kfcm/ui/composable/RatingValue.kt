@@ -19,9 +19,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.techieblossom.kfcm.calculateColor
-import com.techieblossom.kfcm.prepareValueAndColorWithDelta
-import com.techieblossom.kfcm.ui.dashIfNullOrBlank
+import com.techieblossom.kfcm.utility.domain.calculateColor
+import com.techieblossom.kfcm.utility.domain.prepareValueAndColorWithDelta
+import com.techieblossom.kfcm.utility.domain.dashIfNullOrBlank
 import com.techieblossom.kfcm.ui.theme.FCMTheme
 
 @Composable
@@ -54,7 +54,7 @@ fun RatingValue(value: String?, valueStyle: TextStyle = MaterialTheme.typography
             Box(
                 modifier = Modifier
                     .size(24.dp)
-                    .border(width = 2.dp, it, shape = RoundedCornerShape(2.dp))
+                    .border(width = 2.dp, it, shape = RoundedCornerShape(4.dp))
                     .padding(1.dp)
                     .background(it),
                 contentAlignment = Alignment.Center,

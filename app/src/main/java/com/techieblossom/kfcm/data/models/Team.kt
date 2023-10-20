@@ -1,8 +1,8 @@
 package com.techieblossom.kfcm.data.models
 
 import com.techieblossom.kfcm.constants.UIConstants
-import com.techieblossom.kfcm.preparePlayerImageUrl
-import com.techieblossom.kfcm.prepareTeamImageUrl
+import com.techieblossom.kfcm.utility.domain.preparePlayerImageUrl
+import com.techieblossom.kfcm.utility.domain.prepareTeamImageUrl
 
 @kotlinx.serialization.Serializable
 data class Team(

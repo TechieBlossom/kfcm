@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.techieblossom.kfcm.ui.dashIfNullOrBlank
+import com.techieblossom.kfcm.utility.domain.dashIfNullOrBlank
 import com.techieblossom.kfcm.ui.theme.FCMTheme
 
 @Composable
