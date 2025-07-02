@@ -10,9 +10,9 @@ val supabaseConstants = SupabaseConstants()
 
 class SupabaseConstants {
     companion object {
-        const val supabaseURL = "https://muvntiyztalheltppvrn.supabase.co"
+        const val supabaseURL = "<ADD_YOURS>"
         const val supabaseKey =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11dm50aXl6dGFsaGVsdHBwdnJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEzODE3ODAsImV4cCI6MTk5Njk1Nzc4MH0.jiJ4cdz1dnvMFO-HWPXxlcJstkAQeeJsztu8xbFfgLg"
+            "<ADD_YOURS>"
     }
 
     fun getClient() = createSupabaseClient(
